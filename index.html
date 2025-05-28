@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ANOMALI BANI SALEH</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes pulseRed {
+      0%, 100% {
+        color: #ef4444;
+        transform: scale(1);
+      }
+      50% {
+        color: #b91c1c;
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes spin360 {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes bgAlert {
+      0%, 100% { background-color: #1f1f1f; }
+      50% { background-color: #7f1d1d; } /* red-900 */
+    }
+
+    .meme-text {
+      animation: pulseRed 0.6s infinite;
+      font-weight: 900;
+      text-align: center;
+      filter: contrast(1.5) brightness(1.2);
+      text-shadow: 0 0 4px red;
+    }
+
+    .glitch-text {
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% {
+        text-shadow: 2px 2px red, -2px -2px blue;
+      }
+      20% {
+        text-shadow: -2px 1px lime, 1px -1px cyan;
+      }
+      40%, 100% {
+        text-shadow: 1px 1px red, -1px -1px blue;
+      }
+    }
+
+    .spin-slow {
+      animation: spin360 6s linear infinite;
+    }
+
+    .bg-alert {
+      animation: bgAlert 2s infinite;
+    }
+
+    .warning-text {
+      animation: pulseRed 1s infinite;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="bg-black bg-alert min-h-screen flex items-center justify-center p-4">
+
+  <div class="flex flex-col items-center space-y-6 text-center">
+    <img src="anomali.jpeg" alt="Anomali"
+      class="spin-slow w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 rounded-full border-4 border-red-600 shadow-lg shadow-red-800" />
+
+    <div class="meme-text text-red-600 text-lg sm:text-2xl md:text-3xl">
+      WASPADA ANOMALI BANI SALEH SEDANG MENGINTAI
+    </div>
+
+    <div class="warning-text text-red-500 mt-2">
+      LEVEL 5 THREAT DETECTED
+    </div>
+  </div>
+
+  <!-- Optional: sirine (auto play muted, can be uncommented) -->
+  <audio autoplay loop>
+    <source src="https://www.soundjay.com/misc/sounds/bell-alarm-01a.mp3" type="audio/mpeg">
+  </audio>
+
+</body>
+</html>
