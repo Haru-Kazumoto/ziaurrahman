@@ -18,6 +18,11 @@
       },
     }
   </script>
+
+  <script>
+    // Paksa dark mode saat load
+    document.documentElement.classList.add('dark');
+  </script>
 </head>
 
 <body class="text-black dark:bg-[#0D1117] dark:text-white font-sans scroll-smooth">
@@ -63,7 +68,8 @@
           </li>
           <li>
             <a href="#contact"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact Me</a>
+              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact
+              Me</a>
           </li>
           <!-- <li>
             <a onclick="toggleDarkMode()"
@@ -139,25 +145,25 @@
       <h3 class="text-2xl font-semibold text-blue-400 mb-6 mt-12">Tech Stack & Tools</h3>
       <div
         class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-6 gap-4 md:gap-3 lg:gap-4 items-center justify-center">
-        <img src="/stacks/js-logo.png" alt="JavaScript"
+        <img src="stacks/js-logo.png" alt="JavaScript"
           class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/ts-logo.png" alt="TypeScript"
+        <img src="stacks/ts-logo.png" alt="TypeScript"
           class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/php-logo.png" alt="PHP" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/java-logo.jpg" alt="Java" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/python-logo.png" alt="Python"
+        <img src="stacks/php-logo.png" alt="PHP" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
+        <img src="stacks/java-logo.jpg" alt="Java" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
+        <img src="stacks/python-logo.png" alt="Python"
           class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/laravel-logo.png" alt="Laravel"
+        <img src="stacks/laravel-logo.png" alt="Laravel"
           class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/nestjs-logo.png" alt="NestJS"
+        <img src="stacks/nestjs-logo.png" alt="NestJS"
           class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/vuejs-logo.png" alt="VueJS" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/angularjs-logo.png" alt="AngularJS"
+        <img src="stacks/vuejs-logo.png" alt="VueJS" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
+        <img src="stacks/angularjs-logo.png" alt="AngularJS"
           class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/express-js-logo.png" alt="ExpressJS"
+        <img src="stacks/express-js-logo.png" alt="ExpressJS"
           class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/mysql-logo.png" alt="MySQL" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="/stacks/vim-logo.png" alt="Vim" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
+        <img src="stacks/mysql-logo.png" alt="MySQL" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
+        <img src="stacks/vim-logo.png" alt="Vim" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
       </div>
 
     </div>
@@ -174,7 +180,7 @@
         <div
           class="max-w-sm mx-auto bg-[#1E293B] border border-gray-700 rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition">
           <a href="#">
-            <img class="rounded-t-xl w-full h-48 object-cover" src="/projects/mitra10.png" alt="Project A" />
+            <img class="rounded-t-xl w-full h-48 object-cover" src="projects/mitra10.png" alt="Project A" />
           </a>
           <div class="p-5 text-left">
             <a href="#">
@@ -200,7 +206,7 @@
         <div
           class="max-w-sm mx-auto bg-[#1E293B] border border-gray-700 rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition">
           <a href="#">
-            <img class="rounded-t-xl w-full h-48 object-cover" src="/projects/ppdb.png" alt="Project A" />
+            <img class="rounded-t-xl w-full h-48 object-cover" src="projects/ppdb.png" alt="Project A" />
           </a>
           <div class="p-5 text-left">
             <a href="#">
@@ -227,7 +233,7 @@
         <div
           class="max-w-sm mx-auto bg-[#1E293B] border border-gray-700 rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition">
           <a href="#">
-            <img class="rounded-t-xl w-full h-48 object-cover" src="/projects/inven.png" alt="Project A" />
+            <img class="rounded-t-xl w-full h-48 object-cover" src="projects/inven.png" alt="Project A" />
           </a>
           <div class="p-5 text-left">
             <a href="#">
@@ -254,7 +260,7 @@
         <div
           class="max-w-sm mx-auto bg-[#1E293B] border border-gray-700 rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition">
           <a href="#">
-            <img class="rounded-t-xl w-full h-48 object-cover" src="/projects/marketing.png" alt="Project A" />
+            <img class="rounded-t-xl w-full h-48 object-cover" src="projects/marketing.png" alt="Project A" />
           </a>
           <div class="p-5 text-left">
             <a href="#">
@@ -452,6 +458,8 @@
 
 
   <script>
+
+
     // Simpan preferensi user di localStorage
     function toggleDarkMode() {
       const html = document.documentElement;
