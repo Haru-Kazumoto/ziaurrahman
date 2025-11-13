@@ -6,458 +6,819 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ziaurrahman.dev</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
-
+  <!-- Flowbite & Tailwind -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+    rel="stylesheet"
+  />
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
-        extend: {},
+        extend: {
+          fontFamily: {
+            sans: ['system-ui', 'ui-sans-serif', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            'z-bg': '#0D1117',
+            'z-section': '#0F172A',
+          },
+        },
       },
-    }
+    };
+
+    // Default to dark on first load
     document.documentElement.classList.add('dark');
   </script>
-
 </head>
 
-<body class="text-black dark:bg-[#0D1117] dark:text-white font-sans scroll-smooth">
-
+<body
+  class="text-black bg-slate-50 dark:bg-z-bg dark:text-white font-sans scroll-smooth"
+>
   <!-- Navbar -->
-  <nav class="bg-white border-gray-500 dark:bg-gray-900 z-50 fixed w-full">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <span class="text-2xl font-semibold text-blue-500 dark:text-blue-400 tracking-wide">
-          Ziaurrahman<span class="text-white dark:text-gray-200">.dev</span>
+  <nav
+    class="fixed top-0 left-0 right-0 z-50 bg-white/80 border-b border-slate-200/70 backdrop-blur-md dark:bg-slate-900/80 dark:border-slate-800"
+  >
+    <div
+      class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-3"
+    >
+      <!-- Brand -->
+      <a href="#home" class="flex items-center space-x-2 rtl:space-x-reverse">
+        <span
+          class="text-2xl font-semibold text-blue-500 dark:text-blue-400 tracking-wide"
+        >
+          Ziaurrahman<span class="text-slate-900 dark:text-gray-200">.dev</span>
         </span>
-
-
       </a>
-      <button data-collapse-toggle="navbar-default" type="button"
-        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        aria-controls="navbar-default" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M1 1h15M1 7h15M1 13h15" />
-        </svg>
-      </button>
+
+      <div class="flex items-center gap-2">
+        <!-- Dark mode toggle -->
+        <!-- <button
+          type="button"
+          onclick="toggleDarkMode()"
+          class="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-full border border-slate-200/70 dark:border-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+          aria-label="Toggle dark mode"
+        >
+          <svg
+            class="w-5 h-5 dark:hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          >
+            <circle cx="12" cy="12" r="4" />
+            <path
+              d="M12 3v2.5M12 18.5V21M4.22 4.22 5.9 5.9M18.1 18.1l1.68 1.68M3 12h2.5M18.5 12H21M4.22 19.78 5.9 18.1M18.1 5.9 19.78 4.22"
+            />
+          </svg>
+          <svg
+            class="w-5 h-5 hidden dark:block"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 12.79A9 9 0 0111.21 3 7 7 0 0012 17a7 7 0 009-4.21z"
+            />
+          </svg>
+        </button> -->
+
+        <!-- Mobile menu button -->
+        <button
+          data-collapse-toggle="navbar-default"
+          type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 dark:focus:ring-gray-700"
+          aria-controls="navbar-default"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg
+            class="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Menu -->
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul
-          class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          class="font-medium flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50/90 md:flex-row md:space-x-6 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-900/90 md:dark:bg-transparent dark:border-gray-700"
+        >
           <li>
-            <a href="#home"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              aria-current="page">Home</a>
+            <a
+              href="#home"
+              class="block py-2 px-3 text-gray-900 rounded-sm md:p-0 hover:text-blue-600 md:hover:text-blue-500 dark:text-gray-100 dark:hover:text-blue-400 transition"
+              aria-current="page"
+              >Home</a
+            >
           </li>
           <li>
-            <a href="#about"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+            <a
+              href="#about"
+              class="block py-2 px-3 text-gray-900 rounded-sm md:p-0 hover:text-blue-600 md:hover:text-blue-500 dark:text-gray-100 dark:hover:text-blue-400 transition"
+              >About</a
+            >
           </li>
           <li>
-            <a href="#projects"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Projects</a>
+            <a
+              href="#projects"
+              class="block py-2 px-3 text-gray-900 rounded-sm md:p-0 hover:text-blue-600 md:hover:text-blue-500 dark:text-gray-100 dark:hover:text-blue-400 transition"
+              >Projects</a
+            >
           </li>
           <li>
-            <a href="#services"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+            <a
+              href="#services"
+              class="block py-2 px-3 text-gray-900 rounded-sm md:p-0 hover:text-blue-600 md:hover:text-blue-500 dark:text-gray-100 dark:hover:text-blue-400 transition"
+              >Services</a
+            >
           </li>
           <li>
-            <a href="#contact"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact
-              Me</a>
+            <a
+              href="#contact"
+              class="block py-2 px-3 text-gray-900 rounded-sm md:p-0 hover:text-blue-600 md:hover:text-blue-500 dark:text-gray-100 dark:hover:text-blue-400 transition"
+              >Contact</a
+            >
           </li>
-          <!-- <li>
-            <a onclick="toggleDarkMode()"
-              class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
-              <span>DARK MODE</span>
-            </a>
-          </li> -->
         </ul>
       </div>
     </div>
   </nav>
 
-
-
-
   <!-- Hero Section -->
-  <section id="home"
-    class="min-h-screen flex items-center px-6 pt-28 bg-gradient-to-br from-[#0D1117] to-[#111827] dark:bg-[#0F172A]">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-      <!-- Teks -->
-      <div class="text-center md:text-left">
-        <p class="text-blue-400 text-sm uppercase tracking-widest mb-2">Good Day!</p>
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
-          I'm <span class="text-blue-500">Ziaurrahman</span>,<br />
-          <span class="text-black dark:text-gray-300">Web Developer & Software Enthusiast</span>
+  <section
+    id="home"
+    class="min-h-screen flex items-center px-6 pt-32 pb-16 bg-gradient-to-br from-z-bg via-slate-900 to-slate-950"
+  >
+    <div
+      class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+    >
+      <!-- Text -->
+      <div class="text-center md:text-left space-y-5">
+        <p
+          class="inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-blue-300/90 bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-1 mb-1"
+        >
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Good Day!
+        </p>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+          I'm
+          <span class="text-blue-500">Ziaurrahman</span>,
+          <br />
+          <span class="text-gray-100 text-3xl md:text-4xl">
+            Web Developer & Software Enthusiast
+          </span>
         </h1>
-        <p class="text-gray-500 dark:text-gray-400 text-lg mb-6 leading-relaxed">
-          Fullstack web development made simple from intuitive UI to powerful server-side logic.
+        <p
+          class="text-gray-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto md:mx-0"
+        >
+          I build web applications from intuitive, pixel-perfect interfaces to
+          reliable, scalable backends. Focused on clean architecture and
+          long-term maintainability.
         </p>
 
+        <div
+          class="flex flex-col sm:flex-row items-center gap-3 justify-center md:justify-start"
+        >
+          <a
+            href="#projects"
+            class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition shadow-md hover:shadow-lg"
+          >
+            Peek My Projects
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.6"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
 
-
-        <a href="#projects"
-          class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition shadow-md hover:shadow-lg flex items-center gap-2 w-fit mx-auto md:mx-0">
-          Peek My Projects
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="w-5 h-5">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
-          </svg>
-        </a>
-
-
-      </div>
-
-      <!-- Gambar -->
-      <div class="relative flex justify-center">
-        <div class="relative w-72 h-72 md:w-80 md:h-80">
-          <!-- Glow Background -->
-          <div class="absolute inset-0 rounded-full bg-blue-800 blur-2xl opacity-30 animate-pulse z-0">
-          </div>
-          <!-- Foto -->
-          <img src="hero.jpeg" alt="Foto Haru"
-            class="relative z-10 rounded-full w-full h-full object-cover border-4 border-blue-600 shadow-xl hover:scale-105 transition duration-300 ease-in-out" />
+          <a
+            href="#contact"
+            class="inline-flex items-center gap-2 text-sm text-blue-300 hover:text-blue-200"
+          >
+            Contact me
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
       </div>
 
+      <!-- Image -->
+      <div class="relative flex justify-center">
+        <div class="relative w-72 h-72 md:w-80 md:h-80">
+          <!-- Glow Background -->
+          <div
+            class="absolute inset-0 rounded-full bg-blue-700 blur-3xl opacity-30 animate-pulse z-0"
+          ></div>
+          <!-- Photo -->
+          <img
+            src="hero.jpeg"
+            alt="Portrait of Ziaurrahman"
+            class="relative z-10 rounded-full w-full h-full object-cover border-4 border-blue-600 shadow-xl hover:scale-105 transition duration-300 ease-in-out"
+          />
+        </div>
+      </div>
     </div>
   </section>
-
-
 
   <!-- About Section -->
-  <section id="about" class="py-24 px-6 bg-[#0F172A]" id="about">
+  <section id="about" class="py-24 px-6 bg-z-section">
     <div class="max-w-5xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6 text-blue-400">About Me</h2>
-      <p class="text-gray-300 leading-relaxed text-base md:text-lg mb-10">
-        I have experience building interactive websites, web applications, and modern responsive user interfaces.
-        I'm dedicated to crafting clean architecture and scalable backend systems to support powerful web platforms.
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-blue-400">
+        About Me
+      </h2>
+      <p
+        class="text-gray-300 leading-relaxed text-base md:text-lg mb-10 max-w-3xl mx-auto"
+      >
+        I have experience building interactive websites, web applications, and
+        modern responsive user interfaces. I enjoy solving problems across the
+        stack—from frontend usability and design systems to backend APIs,
+        database design, and deployment.
       </p>
 
-      <h3 class="text-2xl font-semibold text-blue-400 mb-6 mt-12">Tech Stack & Tools</h3>
+      <h3 class="text-2xl font-semibold text-blue-300 mb-6 mt-10">
+        Tech Stack & Tools
+      </h3>
       <div
-        class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-6 gap-4 md:gap-3 lg:gap-4 items-center justify-center">
-        <img src="stacks/js-logo.png" alt="JavaScript"
-          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/ts-logo.png" alt="TypeScript"
-          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/php-logo.png" alt="PHP" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/java-logo.jpg" alt="Java" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/python-logo.png" alt="Python"
-          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/laravel-logo.png" alt="Laravel"
-          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/nestjs-logo.png" alt="NestJS"
-          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/vuejs-logo.png" alt="VueJS" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/angularjs-logo.png" alt="AngularJS"
-          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/express-js-logo.png" alt="ExpressJS"
-          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/mysql-logo.png" alt="MySQL" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
-        <img src="stacks/vim-logo.png" alt="Vim" class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded p-2" />
+        class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-4 md:gap-5 items-center justify-center"
+      >
+        <img
+          src="stacks/js-logo.png"
+          alt="JavaScript"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/ts-logo.png"
+          alt="TypeScript"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/php-logo.png"
+          alt="PHP"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/java-logo.jpg"
+          alt="Java"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/python-logo.png"
+          alt="Python"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/laravel-logo.png"
+          alt="Laravel"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/nestjs-logo.png"
+          alt="NestJS"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/vuejs-logo.png"
+          alt="VueJS"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/angularjs-logo.png"
+          alt="AngularJS"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/express-js-logo.png"
+          alt="ExpressJS"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/mysql-logo.png"
+          alt="MySQL"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
+        <img
+          src="stacks/vim-logo.png"
+          alt="Vim"
+          class="w-14 h-14 md:w-16 md:h-16 mx-auto bg-white rounded-xl p-2 shadow-sm"
+        />
       </div>
-
     </div>
   </section>
 
-
   <!-- Projects Section -->
-  <section id="projects" class="py-20 px-6 bg-[#0D1117]">
+  <section id="projects" class="py-24 px-6 bg-z-bg">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-blue-400">My Handcrafts</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-blue-400">
+        My Handcrafts
+      </h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Project Card -->
         <div
-          class="max-w-sm mx-auto bg-[#1E293B] border border-gray-700 rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition">
-          <a href="#">
-            <img class="rounded-t-xl w-full h-48 object-cover" src="projects/mitra10.png" alt="Project A" />
+          class="max-w-sm mx-auto bg-slate-900/70 border border-slate-700 rounded-2xl shadow-md overflow-hidden hover:scale-[1.02] hover:shadow-xl transition transform"
+        >
+          <a href="https://perdin.mitra10.com/login" target="_blank">
+            <img
+              class="rounded-t-2xl w-full h-48 object-cover"
+              src="projects/mitra10.png"
+              alt="Official travel backend"
+            />
           </a>
           <div class="p-5 text-left">
-            <a href="#">
-              <h5 class="mb-2 text-xl font-semibold tracking-tight text-white">Official travel - Backend</h5>
-            </a>
-            <p class="mb-4 text-gray-400 text-sm">
-              A travel request and approval system designed for managing employee business trips. Includes automated
-              workflows, budgeting control, multi-role access, and PDF document generation for approval letters.
+            <h5 class="mb-2 text-xl font-semibold tracking-tight text-white">
+              Official Travel · Backend
+            </h5>
+            <p class="mb-4 text-gray-400 text-sm leading-relaxed">
+              A travel request and approval system designed for managing employee
+              business trips. Includes automated workflows, budgeting control,
+              multi-role access, and PDF document generation for approval
+              letters.
             </p>
 
-            <a href="https://perdin.mitra10.com/login"
-              class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+            <a
+              href="https://perdin.mitra10.com/login"
+              target="_blank"
+              class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition"
+            >
               See more
-              <svg class="w-4 h-4 ms-2 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9" />
+              <svg
+                class="w-4 h-4 ms-2 rtl:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
               </svg>
             </a>
           </div>
         </div>
 
         <div
-          class="max-w-sm mx-auto bg-[#1E293B] border border-gray-700 rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition">
-          <a href="#">
-            <img class="rounded-t-xl w-full h-48 object-cover" src="projects/ppdb.png" alt="Project A" />
+          class="max-w-sm mx-auto bg-slate-900/70 border border-slate-700 rounded-2xl shadow-md overflow-hidden hover:scale-[1.02] hover:shadow-xl transition transform"
+        >
+          <a href="https://ppdb.smp-smktintaemas.sch.id/" target="_blank">
+            <img
+              class="rounded-t-2xl w-full h-48 object-cover"
+              src="projects/ppdb.png"
+              alt="PPDB Online"
+            />
           </a>
           <div class="p-5 text-left">
-            <a href="#">
-              <h5 class="mb-2 text-xl font-semibold tracking-tight text-white">Project A - Dashboard UI</h5>
-            </a>
-            <p class="mb-4 text-gray-400 text-sm">
-              An online student admission system that streamlines the registration process for new students. Features
-              include real-time form submissions, automated document validation, quota management, and announcement
-              modules.
+            <h5 class="mb-2 text-xl font-semibold tracking-tight text-white">
+              PPDB Online · Admission System
+            </h5>
+            <p class="mb-4 text-gray-400 text-sm leading-relaxed">
+              An online student admission system that streamlines the registration
+              process for new students. Real-time submissions, document
+              validation, quota management, and announcement modules.
             </p>
 
-            <a href="https://ppdb.smp-smktintaemas.sch.id/"
-              class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+            <a
+              href="https://ppdb.smp-smktintaemas.sch.id/"
+              target="_blank"
+              class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition"
+            >
               See more
-              <svg class="w-4 h-4 ms-2 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9" />
+              <svg
+                class="w-4 h-4 ms-2 rtl:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
               </svg>
             </a>
           </div>
         </div>
 
         <div
-          class="max-w-sm mx-auto bg-[#1E293B] border border-gray-700 rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition">
-          <a href="#">
-            <img class="rounded-t-xl w-full h-48 object-cover" src="projects/inven.png" alt="Project A" />
+          class="max-w-sm mx-auto bg-slate-900/70 border border-slate-700 rounded-2xl shadow-md overflow-hidden hover:scale-[1.02] hover:shadow-xl transition transform"
+        >
+          <a href="https://inven.smp-smktintaemas.sch.id/" target="_blank">
+            <img
+              class="rounded-t-2xl w-full h-48 object-cover"
+              src="projects/inven.png"
+              alt="Inventory management"
+            />
           </a>
           <div class="p-5 text-left">
-            <a href="#">
-              <h5 class="mb-2 text-xl font-semibold tracking-tight text-white">Project A - Dashboard UI</h5>
-            </a>
-            <p class="mb-4 text-gray-400 text-sm">
-              A simple and efficient inventory management system for tracking assets, stock levels, and item movement.
-              Includes features like real-time updates, barcode scanning support, role-based access, and history logs
-              for audits.
+            <h5 class="mb-2 text-xl font-semibold tracking-tight text-white">
+              Inventory Management · Web App
+            </h5>
+            <p class="mb-4 text-gray-400 text-sm leading-relaxed">
+              A lightweight inventory management system for tracking assets, stock
+              levels, and item movement. Includes history logs, role-based access,
+              and clear reporting.
             </p>
 
-            <a href="https://inven.smp-smktintaemas.sch.id/"
-              class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+            <a
+              href="https://inven.smp-smktintaemas.sch.id/"
+              target="_blank"
+              class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition"
+            >
               See more
-              <svg class="w-4 h-4 ms-2 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9" />
+              <svg
+                class="w-4 h-4 ms-2 rtl:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
               </svg>
             </a>
           </div>
         </div>
 
         <div
-          class="max-w-sm mx-auto bg-[#1E293B] border border-gray-700 rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition">
-          <a href="#">
-            <img class="rounded-t-xl w-full h-48 object-cover" src="projects/marketing.png" alt="Project A" />
+          class="max-w-sm mx-auto bg-slate-900/70 border border-slate-700 rounded-2xl shadow-md overflow-hidden hover:scale-[1.02] hover:shadow-xl transition transform"
+        >
+          <a href="https://danitama.smartonline.id" target="_blank">
+            <img
+              class="rounded-t-2xl w-full h-48 object-cover"
+              src="projects/marketing.png"
+              alt="Marketing app"
+            />
           </a>
           <div class="p-5 text-left">
-            <a href="#">
-              <h5 class="mb-2 text-xl font-semibold tracking-tight text-white">Project A - Dashboard UI</h5>
-            </a>
-            <p class="mb-4 text-gray-400 text-sm">
-              A web-based marketing and sales application to manage leads, customer interactions, and sales pipelines.
-              Features include lead tracking, follow-up scheduling, performance analytics, and integration with WhatsApp
-              and email.
+            <h5 class="mb-2 text-xl font-semibold tracking-tight text-white">
+              Marketing & Sales Dashboard
+            </h5>
+            <p class="mb-4 text-gray-400 text-sm leading-relaxed">
+              A web-based marketing and sales application to manage leads, customer
+              interactions, and pipelines. Includes follow-up reminders, analytics,
+              and integrations.
             </p>
 
-            <a href="https://danitama.smartonline.id"
-              class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+            <a
+              href="https://danitama.smartonline.id"
+              target="_blank"
+              class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition"
+            >
               See more
-              <svg class="w-4 h-4 ms-2 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9" />
+              <svg
+                class="w-4 h-4 ms-2 rtl:rotate-180"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
               </svg>
             </a>
           </div>
         </div>
-        <!-- Tambahkan lebih banyak kartu seperti di atas -->
       </div>
     </div>
   </section>
 
-  <!-- Service Section -->
-  <section id="services" class="py-20 px-6 bg-[#0F172A]">
+  <!-- Services Section -->
+  <section id="services" class="py-24 px-6 bg-z-section">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-blue-400">My Services</h2>
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-blue-400">
+        My Services
+      </h2>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
         <!-- Service Card -->
         <div
-          class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-6 text-center transition">
-          <!-- Icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              d="M9.75 6.75h4.5m-6 3h7.5m-9 3h10.5M4.5 6.75h.008v.008H4.5V6.75Zm0 3h.008v.008H4.5V9.75Zm0 3h.008v.008H4.5v-.008Z" />
+          class="flex flex-col items-center bg-white/5 border border-slate-700 rounded-2xl shadow-sm dark:bg-slate-900/80 p-6 text-center transition hover:border-blue-500/80 hover:-translate-y-1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-10 h-10 text-blue-400 mb-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M9.75 6.75h4.5m-6 3h7.5m-9 3h10.5M4.5 6.75h.008v.008H4.5V6.75Zm0 3h.008v.008H4.5V9.75Zm0 3h.008v.008H4.5v-.008Z"
+            />
           </svg>
-          <h5 class="mb-2 text-xl font-semibold text-white">Interactive</h5>
-          <p class="text-gray-400 text-sm">Modern user interactions that feel alive and intuitive.</p>
-        </div>
-
-        <!-- Repeat for each service -->
-        <div
-          class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-6 text-center transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-              d="M4.5 6.75l7.5 4.5 7.5-4.5m-15 6l7.5 4.5 7.5-4.5" />
-          </svg>
-          <h5 class="mb-2 text-xl font-semibold text-white">Responsive</h5>
-          <p class="text-gray-400 text-sm">Perfectly adapted to any screen size and device.</p>
-        </div>
-
-        <div
-          class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-6 text-center transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3v18h18V3H3Zm9 3v12" />
-          </svg>
-          <h5 class="mb-2 text-xl font-semibold text-white">Scalable</h5>
-          <p class="text-gray-400 text-sm">Built to grow with your business and requirements.</p>
+          <h5 class="mb-2 text-lg font-semibold text-white">Interactive</h5>
+          <p class="text-gray-400 text-sm">
+            Modern user interactions that feel alive, intuitive, and purposeful.
+          </p>
         </div>
 
         <div
-          class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-6 text-center transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.5v15m7.5-7.5h-15" />
+          class="flex flex-col items-center bg-white/5 border border-slate-700 rounded-2xl shadow-sm dark:bg-slate-900/80 p-6 text-center transition hover:border-blue-500/80 hover:-translate-y-1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-10 h-10 text-blue-400 mb-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M4.5 6.75l7.5 4.5 7.5-4.5m-15 6l7.5 4.5 7.5-4.5"
+            />
           </svg>
-          <h5 class="mb-2 text-xl font-semibold text-white">High Performance</h5>
-          <p class="text-gray-400 text-sm">Optimized code and assets for fast load times and smooth UX.</p>
+          <h5 class="mb-2 text-lg font-semibold text-white">Responsive</h5>
+          <p class="text-gray-400 text-sm">
+            Seamless experiences from mobile screens to desktop monitors.
+          </p>
         </div>
 
         <div
-          class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-6 text-center transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6.75 4.5l10.5 7.5-10.5 7.5" />
+          class="flex flex-col items-center bg-white/5 border border-slate-700 rounded-2xl shadow-sm dark:bg-slate-900/80 p-6 text-center transition hover:border-blue-500/80 hover:-translate-y-1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-10 h-10 text-blue-400 mb-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M3 3v18h18V3H3Zm9 3v12"
+            />
           </svg>
-          <h5 class="mb-2 text-xl font-semibold text-white">Clean Architecture</h5>
-          <p class="text-gray-400 text-sm">Separation of concerns and maintainable codebase structure.</p>
+          <h5 class="mb-2 text-lg font-semibold text-white">Scalable</h5>
+          <p class="text-gray-400 text-sm">
+            Architectures prepared to handle more users, features, and data.
+          </p>
         </div>
 
         <div
-          class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 p-6 text-center transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-blue-500 mb-4" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.5 4.5h15v15h-15v-15z" />
+          class="flex flex-col items-center bg-white/5 border border-slate-700 rounded-2xl shadow-sm dark:bg-slate-900/80 p-6 text-center transition hover:border-blue-500/80 hover:-translate-y-1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-10 h-10 text-blue-400 mb-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
           </svg>
-          <h5 class="mb-2 text-xl font-semibold text-white">Maintainable Codebase</h5>
-          <p class="text-gray-400 text-sm">Easy to update, refactor, and scale for future development.</p>
+          <h5 class="mb-2 text-lg font-semibold text-white">
+            High Performance
+          </h5>
+          <p class="text-gray-400 text-sm">
+            Optimized assets, caching, and efficient queries for fast load times.
+          </p>
         </div>
 
+        <div
+          class="flex flex-col items-center bg-white/5 border border-slate-700 rounded-2xl shadow-sm dark:bg-slate-900/80 p-6 text-center transition hover:border-blue-500/80 hover:-translate-y-1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-10 h-10 text-blue-400 mb-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M6.75 4.5l10.5 7.5-10.5 7.5"
+            />
+          </svg>
+          <h5 class="mb-2 text-lg font-semibold text-white">
+            Clean Architecture
+          </h5>
+          <p class="text-gray-400 text-sm">
+            Clear boundaries between layers, easier testing, and safer changes.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col items-center bg-white/5 border border-slate-700 rounded-2xl shadow-sm dark:bg-slate-900/80 p-6 text-center transition hover:border-blue-500/80 hover:-translate-y-1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-10 h-10 text-blue-400 mb-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M4.5 4.5h15v15h-15v-15z"
+            />
+          </svg>
+          <h5 class="mb-2 text-lg font-semibold text-white">
+            Maintainable Codebase
+          </h5>
+          <p class="text-gray-400 text-sm">
+            Code that can evolve—documented, structured, and friendly for teams.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-
   <!-- Contact Section -->
-  <section id="contact" class="py-20 px-6 bg-[#0F172A] text-white">
+  <section id="contact" class="py-24 px-6 bg-z-bg text-white">
     <div class="max-w-2xl mx-auto text-center mb-10">
-      <h2 class="text-3xl md:text-4xl font-bold text-blue-400 mb-4">Let's Work Together</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-blue-400 mb-4">
+        Let's Work Together
+      </h2>
       <p class="text-gray-400 text-base md:text-lg">
-        I'm open for collaboration, project inquiries, or just a friendly hello. Fill the form below and I'll get back
-        to you!
+        I'm open for collaboration, project inquiries, or just a friendly hello.
+        Fill the form below and I'll get back to you.
       </p>
     </div>
 
-    <!-- Formspree Integrated Form -->
-    <form action="https://formspree.io/f/xvgrqyal" method="POST" class="max-w-2xl mx-auto">
-      <div class="grid md:grid-cols-2 md:gap-6">
-        <!-- Name -->
+    <div
+      class="max-w-2xl mx-auto bg-slate-900/80 border border-slate-800 rounded-2xl p-6 md:p-8 shadow-lg"
+    >
+      <form action="https://formspree.io/f/xvgrqyal" method="POST">
+        <div class="grid md:grid-cols-2 md:gap-6">
+          <!-- Name -->
+          <div class="relative z-0 w-full mb-6 group">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer"
+              placeholder=" "
+              required
+            />
+            <label
+              for="name"
+              class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-90 top-2.5 -z-10 origin-[0]
+              peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+              peer-focus:scale-90 peer-focus:-translate-y-4 peer-focus:text-blue-400"
+            >
+              Your Name
+            </label>
+          </div>
+
+          <!-- Email -->
+          <div class="relative z-0 w-full mb-6 group">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer"
+              placeholder=" "
+              required
+            />
+            <label
+              for="email"
+              class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-90 top-2.5 -z-10 origin-[0]
+              peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
+              peer-focus:scale-90 peer-focus:-translate-y-4 peer-focus:text-blue-400"
+            >
+              Your Email
+            </label>
+          </div>
+        </div>
+
+        <!-- Message -->
         <div class="relative z-0 w-full mb-6 group">
-          <input type="text" name="name" id="name"
-            class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer"
-            placeholder=" " required />
-          <label for="name" class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-90 top-2.5 -z-10 origin-[0]
+          <textarea
+            name="message"
+            id="message"
+            rows="4"
+            class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer"
+            placeholder=" "
+            required
+          ></textarea>
+          <label
+            for="message"
+            class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-90 top-2.5 -z-10 origin-[0]
             peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
-            peer-focus:scale-90 peer-focus:-translate-y-4 peer-focus:text-blue-400">
-            Your Name
+            peer-focus:scale-90 peer-focus:-translate-y-4 peer-focus:text-blue-400"
+          >
+            Your Message
           </label>
         </div>
 
-        <!-- Email -->
-        <div class="relative z-0 w-full mb-6 group">
-          <input type="email" name="email" id="email"
-            class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer"
-            placeholder=" " required />
-          <label for="email" class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-90 top-2.5 -z-10 origin-[0]
-            peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
-            peer-focus:scale-90 peer-focus:-translate-y-4 peer-focus:text-blue-400">
-            Your Email
-          </label>
-        </div>
-      </div>
-
-      <!-- Message -->
-      <div class="relative z-0 w-full mb-6 group">
-        <textarea name="message" id="message" rows="4"
-          class="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-blue-500 peer"
-          placeholder=" " required></textarea>
-        <label for="message" class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-90 top-2.5 -z-10 origin-[0]
-          peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0
-          peer-focus:scale-90 peer-focus:-translate-y-4 peer-focus:text-blue-400">
-          Your Message
-        </label>
-      </div>
-
-      <!-- Submit Button -->
-      <button type="submit"
-        class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-500 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-2.5 text-center transition">
-        Send Message
-      </button>
-    </form>
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="w-full sm:w-auto inline-flex items-center justify-center text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-500/50 font-medium rounded-xl text-sm px-6 py-2.5 text-center transition"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
   </section>
 
-
-
   <!-- Footer -->
-  <footer class="bg-[#0D1117] text-gray-400">
-    <div class="max-w-screen-xl mx-auto px-6 py-10">
-      <div class="flex flex-col md:flex-row items-center md:justify-between gap-6">
+  <footer class="bg-z-bg text-gray-400 border-t border-slate-800">
+    <div class="max-w-screen-xl mx-auto px-6 py-8 md:py-10">
+      <div
+        class="flex flex-col md:flex-row items-center md:justify-between gap-6"
+      >
         <!-- Logo & Name -->
-        <a href="/" class="flex items-center space-x-2">
-          <span class="text-xl md:text-2xl font-semibold text-white tracking-wide">
-            <span class="text-blue-500">Ziaurrahman</span><span class="text-gray-300">.dev</span>
+        <a href="#home" class="flex items-center space-x-2">
+          <span class="text-xl md:text-2xl font-semibold text-white">
+            <span class="text-blue-500">Ziaurrahman</span
+            ><span class="text-gray-300">.dev</span>
           </span>
         </a>
 
-
         <!-- Navigation Links -->
-        <ul class="flex flex-wrap justify-center md:justify-start gap-4 text-sm font-medium">
-          <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
-          <li><a href="#projects" class="hover:text-blue-400 transition">Projects</a></li>
-          <li><a href="#services" class="hover:text-blue-400 transition">Services</a></li>
-          <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+        <ul
+          class="flex flex-wrap justify-center md:justify-start gap-4 text-sm font-medium"
+        >
+          <li>
+            <a href="#about" class="hover:text-blue-400 transition">About</a>
+          </li>
+          <li>
+            <a href="#projects" class="hover:text-blue-400 transition"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a href="#services" class="hover:text-blue-400 transition"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a href="#contact" class="hover:text-blue-400 transition"
+              >Contact</a
+            >
+          </li>
         </ul>
       </div>
 
-      <hr class="my-6 border-gray-700" />
+      <hr class="my-6 border-gray-800" />
 
       <!-- Bottom -->
-      <div class="flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500">
+      <div
+        class="flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500"
+      >
         <span>© 2025 Ziaurrahman. All rights reserved.</span>
-        <span class="mt-2 sm:mt-0">Developed with passion</span>
+        <span class="mt-2 sm:mt-0">Developed with passion.</span>
       </div>
     </div>
   </footer>
 
-
+  <!-- Theme toggle & Flowbite -->
   <script>
-
-
-    // Simpan preferensi user di localStorage
     function toggleDarkMode() {
       const html = document.documentElement;
       if (html.classList.contains('dark')) {
@@ -469,7 +830,6 @@
       }
     }
 
-    // Inisialisasi tema dari localStorage
     (function () {
       const theme = localStorage.getItem('theme');
       if (theme === 'dark') {
@@ -479,7 +839,6 @@
       }
     })();
   </script>
-
 
   <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>
